@@ -1,0 +1,97 @@
+
+
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Menu </div>
+    <div class="list-group list-group-flush">
+     
+      <button class="list-group-item list-group-item-action bg-ligh"(click)="getProductsByHighToLow()">HighToLow</button>
+      <button class="list-group-item list-group-item-action bg-ligh"(click)="getProductsByLowToHigh()">LowToHigh</button>
+      <a routerLink="/menu" class="list-group-item list-group-item-action bg-light" (click)="logout()">Logout</a>
+      <!-- <a href="#" class="list-group-item list-group-item-action bg-light"></a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-primary" id="menu-toggle">Menu</button>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="#">Cart <span class="sr-only"></span></a>
+            </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="#">Logout</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <h2>Products List</h2>
+<table width=550 align="center">
+  
+    <tr>
+      <h4>Search:</h4>
+        <td><input type="text" class="form-control" size="20" placeholder="Enter Keyword for filter result" [(ngModel)]="searchedKeyword"></td>
+        
+    </tr>
+</table>
+<br>
+  
+<table border="5" bordercolor="grey" width=1000 height=auto align="center">
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Brand</th>
+        <th>Price</th>
+    </tr>
+    <tr *ngFor="let p of pdata | filter:searchedKeyword">
+        <td>{{p.productId}}</td>
+        <td>{{p.productName}}</td>
+        <td>{{p.category}}</td>
+        <td>{{p.description}}</td>
+        <td>{{p.brand}}</td>
+        <td>{{p.mrp}}</td>
+    </tr>
+</table>
+<td><input type="number" class="form-control" size="20" placeholder="Enter Product Id" [(ngModel)]="pid" (change)="append()"></td>
+<button type="submit" class="btn btn-info" (click)="addProduct()">Add Product</button>
+{{proIds}}
+<br>
+
+
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->

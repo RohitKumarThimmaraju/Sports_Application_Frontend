@@ -1,0 +1,58 @@
+<div [hidden]="submitted" class="row">
+    <div class="col-md-6 mx-auto p-0">
+       
+            <div class="login-box">
+                <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                    <div class="login-space">
+                        <div class="login">
+                            <div class="group"> 
+                                <label for="username" class="label">Username</label> 
+                                <input id="username" type="text" class="input" placeholder="Enter your username" [(ngModel)]="uname" #username="ngModel" pattern="[A-Za-z0-9].{3,}" required> 
+                                <span *ngIf="!username.valid && (username.dirty || username.touched  )" class="error">Username is required</span>
+                            </div>
+                            <div class="group"> 
+                                <label for="password" class="label">Password</label> 
+                                <input id="password" type="password" class="input" data-type="password" placeholder="Enter your password" [(ngModel)]="pwd" #password="ngModel" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"> </div>
+                                <span *ngIf="!password.valid && (password.dirty || password.touched  )" class="error">Password is required</span>
+                                <br>
+                            <div class="group"> <input type="submit" class="button" value="Sign In" (click)="onSubmit()"> </div>
+                            <div class="hr"></div>
+                        </div>
+                        <div class="sign-up-form">
+                            <div class="group"> 
+                                <label for="username1" class="label">Username</label> 
+                                <input id="username1" type="text" class="input" placeholder="Create your Username" [(ngModel)]="user.name" #username1="ngModel" pattern="[A-Za-z0-9].{3,}" required> 
+                                <span *ngIf="!username1.valid && (username1.dirty || username1.touched  )" class="error">Username is required (minimum 4 values)</span>
+                            </div>
+                            <div class="group"> 
+                                <label for="pass" class="label">Password</label> 
+                                <input id="pass" type="password" class="input" data-type="password" placeholder="Create your password" #pass="ngModel" [(ngModel)]="user.password" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" required> 
+                                <span *ngIf="!pass.valid && (pass.dirty || pass.touched  )" class="error">Password is required - (Must contain at least one number,one uppercase,one lowercase letter, and at least 8 or more values)</span>
+                            </div>    
+                            <div class="group">
+                                <label for="mobile" class="label">Mobile number</label>
+                                <input id="mobile" type="number" class="input" placeholder="Enter Mobile Number" [(ngModel)]="user.contactNo" #mobile="ngModel" pattern="[0-9].{9,9}" required>
+                                <span *ngIf="!mobile.valid && (mobile.dirty || mobile.touched  )" class="error">Mobile No is required - (Must contain 10 digits)</span>
+                            </div>
+                            <div class="group"> 
+                                <label for="email" class="label">Email Address</label> 
+                                <input id="email" type="email" class="input" placeholder="Enter your email address" [(ngModel)]="user.email" #email="ngModel" required>
+                                <span *ngIf="!email.valid && (email.dirty || email.touched  )" class="error">Email is required</span> 
+                            </div>
+                            <div class="group"> <input type="submit" class="button" value="Sign Up" (click)="addCustomer()"> </div>
+                            <div class="hr"></div>
+                            <div class="foot"> <label for="tab-1">Already Member?</label> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+    </div>
+</div>
+
+<div [hidden]="!submitted" class="login-box" align="center">
+    <h4>Login failed!</h4>
+   <h5>UserId or password is wrong!</h5>
+   <br>
+   <a class="btn btn-success" (click)="again()"><h4>Login again</h4></a>
+</div>
